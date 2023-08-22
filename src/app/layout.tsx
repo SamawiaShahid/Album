@@ -3,6 +3,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Button } from "@/components/ui/button";
+import { Heart } from "@/components/icons/heart";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -55,7 +56,7 @@ function SideMenu() {
               Albums
             </Button>
             <Button variant="ghost" className="w-full justify-start flex gap-2">
-              <svg
+            <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"

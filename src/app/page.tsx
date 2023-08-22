@@ -1,39 +1,33 @@
-"use client";
-import { Button } from "@/components/ui/button";
-import { CldUploadButton } from "next-cloudinary";
-import { CldImage } from "next-cloudinary";
-import { useState } from "react";
 
-export type UploadResult = {
-  info: {
-    public_id: string;
-  };
-  event: "success";
+
+import cloudinary from "cloudinary";
+import UploadButton from "./gallery/upload-button";
+
+export type SearchResult = {
+  public_id: string;
+  tags: string[];
 };
 
-export default function Home() {
-  const [imageId, setImageId] = useState("");
+
+export default async function GalleryPage() {
+ const results= await cloudinary.v2.search
+  .expression('resource_type:image')
+  .sort_by('created_at','desc')
+  .max_results(10)
+  .execute()
+
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <Button asChild>
-      <div className="flex gap-2">
-        <CldUploadButton
-          onUpload={(result: UploadResult) => {
-            setImageId(result.info.public_id);
-          }}
-          uploadPreset="jwi2k3dv"
-        />
-        </div>
-      </Button>
-      
+       <section>
+      <div className="flex flex-col gap-8">
+        <div className="flex ">
+          <h1 className="text-4xl font-bold">Gallery</h1>
+          <UploadButton />
 
-      {/* <CldImage
-        width="560"
-        height="400"
-        src="zuczxluj3in0m0wh6sub"
-        sizes="100vw"
-        alt="Description of my image"
-      /> */}
+        </div>
+      </div>
+    </section>
     </main>
   );
 }
