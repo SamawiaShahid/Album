@@ -1,6 +1,6 @@
-import { CloudinaryImage } from "@/cloudinary-image";
-import UploadButton from "./upload-button";
 import cloudinary from "cloudinary";
+import { CloudinaryImage } from "@/cloudinary-image";
+import { ForceRefresh } from "@/components/force-refresh";
 // import GalleryGrid from "./gallery-grid";
 // import { SearchForm } from "./search-form";
 
@@ -25,23 +25,23 @@ export default async function GalleryPage({
 
   return (
     <section>
+      <ForceRefresh />
       <div className="flex flex-col gap-8">
         <div className="flex justify-between">
-          <h1 className="text-4xl font-bold">Gallery</h1>
-          <UploadButton />
+          <h1 className="text-4xl font-bold">Favorite Images</h1>
         </div>
-
         <div className="grid grid-cols-4 gap-4">
           {results.resources.map((result) => (
             <CloudinaryImage
               key={result.public_id}
-              imageData={result}
-              width={400}
               height={300}
+              width={400}
+              imageData={result}
               alt="description"
             />
           ))}
         </div>
+
         {/* <SearchForm initialSearch={search} />
 
         <GalleryGrid images={results.resources} /> */}
