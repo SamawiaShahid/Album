@@ -5,16 +5,16 @@ import { useState, useTransition } from "react";
 import { FullHeart } from "@/components/icons/full-heart";
 import { SearchResult } from "@/app/gallery/page";
 import { Heart } from "lucide-react";
-import { setAsFavoriteAction } from "./app/gallery/action";
+import { setAsFavoriteAction } from "../app/gallery/action";
 import path from "path";
 // import { ImageMenu } from "./image-menu";
 
 export function CloudinaryImage(
   props:any & {
-    imageData: SearchResult;
-    path:string
+    imageData: SearchResult;path:string
     onUnheart?: (unheartedResource: SearchResult) 
     => void;
+    [key:string]:any;
   } & Omit<CldImageProps, "src">
   
 ) {
@@ -46,7 +46,7 @@ export function CloudinaryImage(
               onUnheart?.(imageData);
               setIsFavorited(false);
               startTransition(() => {
-                setAsFavoriteAction(imageData.public_id, false,props.path);
+                setAsFavoriteAction(imageData.public_id, false);
               });
             }}
             className="absolute top-2 right-2 hover:text-red-500  cursor-pointer"
@@ -58,13 +58,15 @@ export function CloudinaryImage(
           onClick={() => {
             setIsFavorited(true);
             startTransition(() => {
-              setAsFavoriteAction(imageData.public_id, true,props.path);
+              setAsFavoriteAction(imageData.public_id, true);
             });
           }}
           className="absolute top-2 left-2 hover:text-red-500  cursor-pointer"
         />
       )}
-      {/* <ImageMenu image={imageData} /> */}
+      {/* <ImageMenu  /> */}
     </div>
   );
 }
+
+

@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
 import { useEffect, useState } from "react";
-import { SearchResult } from "../gallery/page";
+import { SearchResult } from "../app/gallery/page";
 import { ImageGrid } from "@/components/image-grid";
-import { CloudinaryImage } from "../gallery/cloudinary-image";
+import { CloudinaryImage } from "@/components/cloudinary-image";
 
 export default function FavoritesList({
   initialResources,
@@ -27,7 +27,7 @@ export default function FavoritesList({
             width="400"
             height="300"
             alt="an image of something"
-            onUnheart={(unheartedResource: { public_id: string; }) => {
+            onUnheart={(unheartedResource: any) => {
               setResources((currentResources) =>
                 currentResources.filter(
                   (resource) =>
