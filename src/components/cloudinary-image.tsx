@@ -7,7 +7,7 @@ import { SearchResult } from "@/app/gallery/page";
 import { Heart } from "lucide-react";
 import { setAsFavoriteAction } from "../app/gallery/action";
 import path from "path";
-// import { ImageMenu } from "./image-menu";
+import { ImageMenu } from "./image-menu";
 
 export function CloudinaryImage(
   props:any & {
@@ -64,7 +64,10 @@ export function CloudinaryImage(
           className="absolute top-2 left-2 hover:text-red-500  cursor-pointer"
         />
       )}
-      {/* <ImageMenu  /> */}
+      <ImageMenu image={{
+        public_id: "",
+        tags: []
+      }}  />
     </div>
   );
 }
