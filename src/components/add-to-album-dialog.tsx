@@ -41,7 +41,7 @@ export function AddToAlbumDialog({
           <span>Add to Album</span>
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-[425px] bg-black border-white">
         <DialogHeader>
           <DialogTitle>Add to Album</DialogTitle>
           <DialogDescription>

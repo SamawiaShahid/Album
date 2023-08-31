@@ -16,14 +16,14 @@ export function ImageMenu({ image }: { image: SearchResult }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="absolute top-2 right-2 bg-gray-600 rounded-[10px]">
+    <div className="absolute top-2 right-2 bg-[#2c2b2b] rounded-[8px]">
       <DropdownMenu open={open} onOpenChange={setOpen}>
         <DropdownMenuTrigger asChild>
           <Button variant="secondary" className="w-8 h-8 p-0">
             <Menu />
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="w-40">
+        <DropdownMenuContent className="w-40 bg-[black]">
           <DropdownMenuItem asChild>
             <AddToAlbumDialog image={image} onClose={() => setOpen(false)} />
           </DropdownMenuItem>
