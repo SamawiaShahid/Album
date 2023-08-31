@@ -6,7 +6,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Menu } from "./icons/menu";
-// import { AddToAlbumDialog } from "./add-to-album-dialog";
 import { SearchResult } from "@/app/gallery/page";
 import { useState } from "react";
 import Link from "next/link";
@@ -25,22 +24,22 @@ export function ImageMenu({ image }: { image: SearchResult }) {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-40">
-          {/* <AddToAlbumDialog image={image} onClose={() => setOpen(false)} />  */}
-
           <DropdownMenuItem asChild>
-            {/* <Button
-              className="cursor-pointer flex justify-start pl-4"
+            <AddToAlbumDialog image={image} onClose={() => setOpen(false)} />
+          </DropdownMenuItem>
+          <DropdownMenuItem asChild>
+            <Button
               asChild
               variant="ghost"
-            > 
-               <Link
+              className="curson-pointer flex justify-start pl-4"
+            >
+              <Link
                 href={`/edit?publicId=${encodeURIComponent(image.public_id)}`}
-              > */}
-            {/* <Pencil className="mr-2 w-4 h-4" /> */}
-            {/* <span>Add to Album</span>  */}
-            <AddToAlbumDialog image={image} />
-            {/* </Link> 
-             </Button> */}
+              >
+                <Pencil className="mr-2 h-4 w-4" />
+                Edit
+              </Link>
+            </Button>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

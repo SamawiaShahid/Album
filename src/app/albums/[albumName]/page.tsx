@@ -1,15 +1,14 @@
-
 import cloudinary from "cloudinary";
 import AlbumGrid from "./album-grid";
 import { SearchResult } from "@/app/gallery/page";
 import { ForceRefresh } from "@/components/force-refresh";
 
 export default async function GalleryPage({
-params:{albumName},
-}:{
-    params:{
-        albumName:string;
-    }
+  params: { albumName },
+}: {
+  params: {
+    albumName: string;
+  };
 }) {
   const results = (await cloudinary.v2.search
     .expression(`resource_type:image AND folder=${albumName}`)
@@ -20,13 +19,11 @@ params:{albumName},
 
   return (
     <section>
-        <ForceRefresh/>
+      <ForceRefresh />
       <div className="flex flex-col gap-8">
         <div className="flex justify-between">
           <h1 className="text-4xl font-bold">Album {albumName}</h1>
         </div>
-
-       
 
         <AlbumGrid images={results.resources} />
       </div>

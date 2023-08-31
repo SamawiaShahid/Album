@@ -1,6 +1,7 @@
 import UploadButton from "./upload-button";
 import cloudinary from "cloudinary";
 import GalleryGrid from "./gallery-grid";
+import { SearchForm } from "./search-form";
 // import { SearchForm } from "./search-form";
 
 export type SearchResult = {
@@ -29,9 +30,7 @@ export default async function GalleryPage({
           <h1 className="text-4xl font-bold">Gallery</h1>
           <UploadButton />
         </div>
-
-       
-
+        <SearchForm initialSearch={"search"} />
         <GalleryGrid images={results.resources} />
       </div>
     </section>
