@@ -10,13 +10,12 @@ import path from "path";
 import { ImageMenu } from "./image-menu";
 
 export function CloudinaryImage(
-  props:any & {
-    imageData: SearchResult;path:string
-    onUnheart?: (unheartedResource: SearchResult) 
-    => void;
-    [key:string]:any;
+  props: any & {
+    imageData: SearchResult;
+    path: string;
+    onUnheart?: (unheartedResource: SearchResult) => void;
+    [key: string]: any;
   } & Omit<CldImageProps, "src">
-  
 ) {
   const [transition, startTransition] = useTransition();
 
@@ -51,7 +50,6 @@ export function CloudinaryImage(
             }}
             className="absolute top-2 right-2 hover:text-red-500  cursor-pointer"
           />
-
         </svg>
       ) : (
         <Heart
@@ -64,12 +62,7 @@ export function CloudinaryImage(
           className="absolute top-2 left-2 hover:text-red-500  cursor-pointer"
         />
       )}
-      <ImageMenu image={{
-        public_id: "",
-        tags: []
-      }}  />
+      <ImageMenu image={imageData} />
     </div>
   );
 }
-
-
