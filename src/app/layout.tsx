@@ -4,10 +4,10 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { Heart } from "lucide-react";
 import cloudinary from "cloudinary";
 import { Folder } from "./albums/page";
 import Image from "next/image";
+import { Heart } from "lucide-react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,12 +20,13 @@ async function SideMenu() {
   const { folders } = (await cloudinary.v2.api.root_folders()) as {
     folders: Folder[];
   };
+
   return (
     <div className="pb-12 w-1/5">
       <div className="space-y-4 py-4">
         <div className="px-3 py-2">
           <h2 className="mb-2 px-4 text-lg font-semibold tracking-tight">
-            Discover
+            Manage
           </h2>
           <div className="space-y-1">
             <Button
@@ -79,9 +80,9 @@ async function SideMenu() {
                 variant="ghost"
                 asChild
                 key={folder.name}
-                className="bg-black text-white hover:bg-[#2d2d2d] hover:text-white w-[12vw] rounded-[8px]"
+                className="w-full justify-start flex gap-2 bg-black text-white hover:bg-[#2d2d2d] hover:text-white rounded-[8px]"
               >
-                <Link className="pl-4" href={`/albums/${folder.path}`}>
+                <Link className="pl-8" href={`/albums/${folder.path}`}>
                   {folder.name}
                 </Link>
               </Button>
@@ -92,21 +93,7 @@ async function SideMenu() {
               className="w-full justify-start flex gap-2 bg-black text-white hover:bg-[#2d2d2d] hover:text-white rounded-[8px]"
             >
               <Link href="/favorites">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-6 h-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
-                  />
-                </svg>
-                {/* <Heart /> */}
+                <Heart />
                 Favorites
               </Link>
             </Button>
@@ -123,12 +110,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body className={inter.className}>
         <div className="border-b">
-          <div className="flex h-16 items-center px-4 container max-auto">
-            <Image src="/album.png" alt="images" height="50" width="50" />
-            Photos App
+          <div className="flex h-16 items-center px-4 container mx-auto">
+            <Image
+              src="/album.png"
+              width="50"
+              height="50"
+              alt="icon of this photo album app"
+            />
+             Photos App
             <div className="ml-auto flex items-center space-x-4">
               <Avatar>
                 <AvatarImage
@@ -140,11 +132,31 @@ export default function RootLayout({
             </div>
           </div>
         </div>
+
         <div className="flex">
           <SideMenu />
-          <div className="w-full px-4 pt-12">{children}</div>
+
+          <div className="w-full px-4 pt-8">{children}</div>
         </div>
       </body>
     </html>
   );
 }
+
+// }
+
+//  {/* <Link href="/favorites">
+//                 <svg
+//                   xmlns="http://www.w3.org/2000/svg"
+//                   fill="none"
+//                   viewBox="0 0 24 24"
+//                   strokeWidth={1.5}
+//                   stroke="currentColor"
+//                   className="w-6 h-6"
+//                 >
+//                   <path
+//                     strokeLinecap="round"
+//                     strokeLinejoin="round"
+//                     d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
+//                   />
+//                 </svg> */}

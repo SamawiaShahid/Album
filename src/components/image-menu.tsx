@@ -31,7 +31,7 @@ export function ImageMenu({ image }: { image: SearchResult }) {
             <Button
               asChild
               variant="ghost"
-              className="curson-pointer flex justify-start pl-4"
+              className="cursor-pointer flex justify-start pl-4"
             >
               <Link
                 href={`/edit?publicId=${encodeURIComponent(image.public_id)}`}
